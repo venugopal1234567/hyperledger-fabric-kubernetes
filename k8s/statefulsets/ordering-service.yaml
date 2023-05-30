@@ -3,22 +3,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: orderer0-dummy-com
-  namespace: dummy-com
+  name: orderer0-distributedweb-io
+  namespace: distributedweb-io
   labels: 
-    component: orderer0.dummy.com
+    component: orderer0.distributedweb.io
     type: orderer
 spec:
   replicas: 1
-  serviceName: orderer0-dummy-com
+  serviceName: orderer0-distributedweb-io
   selector:
     matchLabels:
-      component: orderer0.dummy.com
+      component: orderer0.distributedweb.io
       type: orderer
   template:
     metadata:
       labels:
-        component: orderer0.dummy.com
+        component: orderer0.distributedweb.io
         type: orderer
     spec:
       volumes:
@@ -29,7 +29,7 @@ spec:
           persistentVolumeClaim:
             claimName: hlf-crypto-config
       containers:
-        - name: orderer0-dummy-com
+        - name: orderer0-distributedweb-io
           image: hyperledger/fabric-orderer:2.4
           imagePullPolicy: IfNotPresent
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
@@ -81,32 +81,32 @@ spec:
               subPath: orderer.genesis.block
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/orderer/msp
-              subPath: ordererOrganizations/dummy.com/orderers/orderer0.dummy.com/msp
+              subPath: ordererOrganizations/distributedweb.io/orderers/orderer0.distributedweb.io/msp
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/orderer/tls
-              subPath: ordererOrganizations/dummy.com/orderers/orderer0.dummy.com/tls
+              subPath: ordererOrganizations/distributedweb.io/orderers/orderer0.distributedweb.io/tls
 
 ---
 
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: orderer1-dummy-com
-  namespace: dummy-com
+  name: orderer1-distributedweb-io
+  namespace: distributedweb-io
   labels: 
-    component: orderer1.dummy.com
+    component: orderer1.distributedweb.io
     type: orderer
 spec:
   replicas: 1
-  serviceName: orderer1-dummy-com
+  serviceName: orderer1-distributedweb-io
   selector:
     matchLabels:
-      component: orderer1.dummy.com
+      component: orderer1.distributedweb.io
       type: orderer
   template:
     metadata:
       labels:
-        component: orderer1.dummy.com
+        component: orderer1.distributedweb.io
         type: orderer
     spec:
       volumes:
@@ -117,7 +117,7 @@ spec:
           persistentVolumeClaim:
             claimName: hlf-crypto-config
       containers:
-        - name: orderer1-dummy-com
+        - name: orderer1-distributedweb-io
           image: hyperledger/fabric-orderer:2.4
           imagePullPolicy: IfNotPresent
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
@@ -169,32 +169,32 @@ spec:
               subPath: orderer.genesis.block
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/orderer/msp
-              subPath: ordererOrganizations/dummy.com/orderers/orderer1.dummy.com/msp
+              subPath: ordererOrganizations/distributedweb.io/orderers/orderer1.distributedweb.io/msp
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/orderer/tls
-              subPath: ordererOrganizations/dummy.com/orderers/orderer1.dummy.com/tls
+              subPath: ordererOrganizations/distributedweb.io/orderers/orderer1.distributedweb.io/tls
 
 ---
 
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: orderer2-dummy-com
-  namespace: dummy-com
+  name: orderer2-distributedweb-io
+  namespace: distributedweb-io
   labels: 
-    component: orderer2.dummy.com
+    component: orderer2.distributedweb.io
     type: orderer
 spec:
   replicas: 1
-  serviceName: orderer2-dummy-com
+  serviceName: orderer2-distributedweb-io
   selector:
     matchLabels:
-      component: orderer2.dummy.com
+      component: orderer2.distributedweb.io
       type: orderer
   template:
     metadata:
       labels:
-        component: orderer2.dummy.com
+        component: orderer2.distributedweb.io
         type: orderer
     spec:
       volumes:
@@ -205,7 +205,7 @@ spec:
           persistentVolumeClaim:
             claimName: hlf-crypto-config
       containers:
-        - name: orderer2-dummy-com
+        - name: orderer2-distributedweb-io
           image: hyperledger/fabric-orderer:2.4
           imagePullPolicy: IfNotPresent
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric
@@ -257,7 +257,7 @@ spec:
               subPath: orderer.genesis.block
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/orderer/msp
-              subPath: ordererOrganizations/dummy.com/orderers/orderer2.dummy.com/msp
+              subPath: ordererOrganizations/distributedweb.io/orderers/orderer2.distributedweb.io/msp
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/orderer/tls
-              subPath: ordererOrganizations/dummy.com/orderers/orderer2.dummy.com/tls
+              subPath: ordererOrganizations/distributedweb.io/orderers/orderer2.distributedweb.io/tls

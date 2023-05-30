@@ -1,6 +1,6 @@
 OrdererOrgs:
   - Name: Orderer
-    Domain: dummy.com
+    Domain: distributedweb.io
     EnableNodeOUs: true
     Specs:
       - Hostname: orderer0
@@ -8,28 +8,28 @@ OrdererOrgs:
           - localhost
           - 127.0.0.1
           - ::1
-          - orderer0-dummy-com
-          - orderer0-dummy-com.dummy-com.svc.cluster.local
-          - orderer0.dummy.com
+          - orderer0-distributedweb-io
+          - orderer0-distributedweb-io.distributedweb-io.svc.cluster.local
+          - orderer0.distributedweb.io
       - Hostname: orderer1
         SANS:
           - localhost
           - 127.0.0.1
           - ::1
-          - orderer1-dummy-com
-          - orderer1-dummy-com.dummy-com.svc.cluster.local
-          - orderer1.dummy.com
+          - orderer1-distributedweb-io
+          - orderer1-distributedweb-io.distributedweb-io.svc.cluster.local
+          - orderer1.distributedweb.io
       - Hostname: orderer2
         SANS:
           - localhost
           - 127.0.0.1
           - ::1
-          - orderer2-dummy-com
-          - orderer2-dummy-com.dummy-com.svc.cluster.local
-          - orderer2.dummy.com
+          - orderer2-distributedweb-io
+          - orderer2-distributedweb-io.distributedweb-io.svc.cluster.local
+          - orderer2.distributedweb.io
 PeerOrgs:
   - Name: Org1
-    Domain: org1.dummy.com
+    Domain: org1.distributedweb.io
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -37,13 +37,13 @@ PeerOrgs:
         - localhost
         - 127.0.0.1
         - ::1
-        - "{{.Hostname}}-org1-dummy-com"
-        - "{{.Hostname}}-org1-dummy-com.dummy-com.svc.cluster.local"
-        - "{{.Hostname}}.org1.dummy.com"
+        - "{{.Hostname}}-org1-distributedweb-io"
+        - "{{.Hostname}}-org1-distributedweb-io.distributedweb-io.svc.cluster.local"
+        - "{{.Hostname}}.org1.distributedweb.io"
     Users:
       Count: 1
   - Name: Org2
-    Domain: org2.dummy.com
+    Domain: org2.distributedweb.io
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -51,13 +51,13 @@ PeerOrgs:
         - localhost
         - 127.0.0.1
         - ::1
-        - "{{.Hostname}}-org2-dummy-com"
-        - "{{.Hostname}}-org2-dummy-com.dummy-com.svc.cluster.local"
-        - "{{.Hostname}}.org2.dummy.com"
+        - "{{.Hostname}}-org2-distributedweb-io"
+        - "{{.Hostname}}-org2-distributedweb-io.distributedweb-io.svc.cluster.local"
+        - "{{.Hostname}}.org2.distributedweb.io"
     Users:
       Count: 1
   - Name: Org3
-    Domain: org3.dummy.com
+    Domain: org3.distributedweb.io
     EnableNodeOUs: true
     Template:
       Count: 1
@@ -65,8 +65,8 @@ PeerOrgs:
         - localhost
         - 127.0.0.1
         - ::1
-        - "{{.Hostname}}-org3-dummy-com"
-        - "{{.Hostname}}-org3-dummy-com.dummy-com.svc.cluster.local"
-        - "{{.Hostname}}.org3.dummy.com"
+        - "{{.Hostname}}-org3-distributedweb-io"
+        - "{{.Hostname}}-org3-distributedweb-io.distributedweb-io.svc.cluster.local"
+        - "{{.Hostname}}.org3.distributedweb.io"
     Users:
       Count: 1

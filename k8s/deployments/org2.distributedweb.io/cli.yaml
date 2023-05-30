@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "cli.peer0.org1.dummy.com"
-  namespace: dummy-com
+  name: "cli.peer0.org2.distributedweb.io"
+  namespace: distributedweb-io
   labels:
-    component: "cli.peer0.org1.dummy.com"
+    component: "cli.peer0.org2.distributedweb.io"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: "cli.peer0.org1.dummy.com"
+      component: "cli.peer0.org2.distributedweb.io"
   template:
     metadata:
       labels:
-        component: "cli.peer0.org1.dummy.com"
+        component: "cli.peer0.org2.distributedweb.io"
     spec:
       containers:
-        - name: cli-peer0-org1-dummy-com
+        - name: cli-peer0-org2-distributedweb-io
           image: hyperledger/fabric-tools:2.4
           imagePullPolicy: IfNotPresent
           workingDir: /etc/hyperledger/fabric/
@@ -24,21 +24,21 @@ spec:
           stdin: true
           env:
             - name: FABRIC_LOGGING_SPEC
-              value: debug
+              value: info
             - name: CHANNEL_NAME
               value: channelall
             - name: CORE_PEER_ADDRESS
-              value: peer0-org1-dummy-com:7051
+              value: peer0-org2-distributedweb-io:7051
             - name: CORE_PEER_LOCALMSPID
-              value: Org1MSP
+              value: Org2MSP
             - name: CORE_PEER_TLS_ENABLED
               value: "true"
             - name: CORE_PEER_TLS_ROOTCERT_FILE
-              value: /etc/hyperledger/fabric/crypto/peerOrganizations/org1.dummy.com/peers/peer0.org1.dummy.com/tls/ca.crt
+              value: /etc/hyperledger/fabric/crypto/peerOrganizations/org2.distributedweb.io/peers/peer0.org2.distributedweb.io/tls/ca.crt
             - name: CORE_PEER_MSPCONFIGPATH
-              value: /etc/hyperledger/fabric/crypto/peerOrganizations/org1.dummy.com/users/Admin@org1.dummy.com/msp
+              value: /etc/hyperledger/fabric/crypto/peerOrganizations/org2.distributedweb.io/users/Admin@org2.distributedweb.io/msp
             - name: ORDERER_CA
-              value: /etc/hyperledger/fabric/crypto/ordererOrganizations/dummy.com/orderers/orderer0.dummy.com/msp/tlscacerts/tlsca.dummy.com-cert.pem
+              value: /etc/hyperledger/fabric/crypto/ordererOrganizations/distributedweb.io/orderers/orderer0.distributedweb.io/msp/tlscacerts/tlsca.distributedweb.io-cert.pem
           volumeMounts:
             - name: chaincode-package
               mountPath: /etc/hyperledger/fabric/chaincodes

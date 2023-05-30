@@ -3,22 +3,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: peer0-org3-dummy-com
-  namespace: dummy-com
+  name: peer0-org2-distributedweb-io
+  namespace: distributedweb-io
   labels: 
-    component: "peer0.org3.dummy.com"
+    component: "peer0.org2.distributedweb.io"
     type: peer
 spec:
   replicas: 1
-  serviceName: peer0-org3-dummy-com
+  serviceName: peer0-org2-distributedweb-io
   selector:
     matchLabels:
-      component: "peer0.org3.dummy.com"
+      component: "peer0.org2.distributedweb.io"
       type: peer
   template:
     metadata:
       labels:
-        component: "peer0.org3.dummy.com"
+        component: "peer0.org2.distributedweb.io"
         type: peer
     spec:
       volumes:
@@ -29,19 +29,19 @@ spec:
           persistentVolumeClaim:
             claimName: hlf-crypto-config
       containers:
-        - name: couchdb-org3-dummy-com
+        - name: couchdb-org2-distributedweb-io
           image: couchdb:3.2.2
           imagePullPolicy: IfNotPresent
           env:
             - name: COUCHDB_USER
               valueFrom:
                 secretKeyRef:
-                  name: couchdb-org3-dummy-com
+                  name: couchdb-org2-distributedweb-io
                   key: username
             - name: COUCHDB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: couchdb-org3-dummy-com
+                  name: couchdb-org2-distributedweb-io
                   key: password
           livenessProbe:
             httpGet:
@@ -53,16 +53,16 @@ spec:
             timeoutSeconds: 1
           ports:
             - containerPort: 5984
-        - name: peer0-org3-dummy-com
+        - name: peer0-org2-distributedweb-io
           image: hyperledger/fabric-peer:2.4
           workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
           env:
             - name: FABRIC_LOGGING_SPEC
               value: debug:cauthdsl,policies,msp,grpc,peer.gossip.mcs,gossip,leveldbhelper=info
             - name: CORE_PEER_ID
-              value: peer0-org3-dummy-com
+              value: peer0-org2-distributedweb-io
             - name: CORE_PEER_ADDRESS
-              value: peer0-org3-dummy-com:7051
+              value: peer0-org2-distributedweb-io:7051
             - name: CORE_PEER_LISTENADDRESS
               value: 0.0.0.0:7051
             - name: CORE_PEER_CHAINCODELISTENADDRESS
@@ -70,7 +70,7 @@ spec:
             - name: CORE_OPERATIONS_LISTENADDRESS
               value: 0.0.0.0:9443
             - name: CORE_PEER_LOCALMSPID
-              value: Org3MSP
+              value: Org2MSP
             - name: CORE_PEER_MSPCONFIGPATH
               value: /var/hyperledger/peer/msp
             - name: CORE_PEER_GOSSIP_ORGLEADER
@@ -78,9 +78,9 @@ spec:
             - name: CORE_PEER_GOSSIP_USELEADERELECTION
               value: "true"
             - name: CORE_PEER_GOSSIP_BOOTSTRAP
-              value: peer0-org3-dummy-com:7051
+              value: peer0-org2-distributedweb-io:7051
             - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-              value: peer0-org3-dummy-com:7051
+              value: peer0-org2-distributedweb-io:7051
             - name: CORE_PEER_TLS_ENABLED
               value: "true"
             - name: CORE_PEER_TLS_ROOTCERT_FILE
@@ -90,7 +90,7 @@ spec:
             - name: CORE_PEER_TLS_KEY_FILE
               value: /var/hyperledger/peer/tls/server.key
             - name: CORE_PEER_TLS_SERVERHOSTOVERRIDE
-              value: peer0-org3-dummy-com
+              value: peer0-org2-distributedweb-io
             - name: CORE_LEDGER_STATE_STATEDATABASE
               value: CouchDB
             - name: CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS
@@ -98,12 +98,12 @@ spec:
             - name: CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: couchdb-org3-dummy-com
+                  name: couchdb-org2-distributedweb-io
                   key: username
             - name: CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: couchdb-org3-dummy-com
+                  name: couchdb-org2-distributedweb-io
                   key: password
           #
           # TODO: grpc probe ?
@@ -130,7 +130,7 @@ spec:
               subPath: config/core.yaml
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/peer/msp
-              subPath: peerOrganizations/org3.dummy.com/peers/peer0.org3.dummy.com/msp
+              subPath: peerOrganizations/org2.distributedweb.io/peers/peer0.org2.distributedweb.io/msp
             - name: hlf-crypto-config
               mountPath: /var/hyperledger/peer/tls
-              subPath: peerOrganizations/org3.dummy.com/peers/peer0.org3.dummy.com/tls
+              subPath: peerOrganizations/org2.distributedweb.io/peers/peer0.org2.distributedweb.io/tls

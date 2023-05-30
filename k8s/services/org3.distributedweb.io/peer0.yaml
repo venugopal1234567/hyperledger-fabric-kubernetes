@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: peer0-org2-dummy-com
-  namespace: dummy-com
+  name: peer0-org3-distributedweb-io
+  namespace: distributedweb-io
 spec:
   type: ClusterIP
   selector:
-    component: "peer0.org2.dummy.com"
+    component: "peer0.org3.distributedweb.io"
   ports:
   - name: "listen"
     port: 7051
